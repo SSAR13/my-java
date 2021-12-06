@@ -17,35 +17,35 @@ public class TechService {
     @Autowired
     TechRepository repository;
      
-    public List<TechDetailsEntity> getAllEmployees()
+    public List<TechDetailsEntity> getAllTechs()
     {
-        List<TechDetailsEntity> employeeList = repository.findAll();
+        List<TechDetailsEntity> techList = repository.findAll();
          
-        if(employeeList.size() > 0) {
-            return employeeList;
+        if(techList.size() > 0) {
+            return techList;
         } else {
             return new ArrayList<TechDetailsEntity>();
         }
     }
      
-    public TechDetailsEntity getEmployeeById(Long id) throws RecordNotFoundException
+    public TechDetailsEntity getTechById(Long id) throws RecordNotFoundException
     {
-        Optional<TechDetailsEntity> employee = repository.findById(id);
+        Optional<TechDetailsEntity> tech = repository.findById(id);
          
-        if(employee.isPresent()) {
-            return employee.get();
+        if(tech.isPresent()) {
+            return tech.get();
         } else {
-            throw new RecordNotFoundException("No employee record exist for given id");
+            throw new RecordNotFoundException("No tech record exist for given id");
         }
     }
      
-    public TechDetailsEntity createOrUpdateEmployee(TechDetailsEntity entity) throws RecordNotFoundException
+    public TechDetailsEntity createOrUpdateTech(TechDetailsEntity entity) throws RecordNotFoundException
     {
-        Optional<TechDetailsEntity> employee = repository.findById(entity.getId());
+        Optional<TechDetailsEntity> tech = repository.findById(entity.getId());
          
-        if(employee.isPresent())
+        if(tech.isPresent())
         {
-            TechDetailsEntity newEntity = employee.get();
+            TechDetailsEntity newEntity = tech.get();
             newEntity.setEmail(entity.getEmail());
             newEntity.setFirstName(entity.getFirstName());
             newEntity.setLastName(entity.getLastName());
@@ -60,15 +60,15 @@ public class TechService {
         }
     }
      
-    public void deleteEmployeeById(Long id) throws RecordNotFoundException
+    public void deleteTechById(Long id) throws RecordNotFoundException
     {
-        Optional<TechDetailsEntity> employee = repository.findById(id);
+        Optional<TechDetailsEntity> tech = repository.findById(id);
          
-        if(employee.isPresent())
+        if(tech.isPresent())
         {
             repository.deleteById(id);
         } else {
-            throw new RecordNotFoundException("No employee record exist for given id");
+            throw new RecordNotFoundException("No tech record exist for given id");
         }
     }
 }

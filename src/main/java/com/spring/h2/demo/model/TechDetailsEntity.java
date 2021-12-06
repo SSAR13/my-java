@@ -8,17 +8,17 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="TBL_EMPLOYEES")
+@Table(name="TECH_DETAILS_TB")
 public class TechDetailsEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @Column(name="first_name")
+    @Column(name="name")
     private String firstName;
     
-    @Column(name="last_name")
+    @Column(name="framework")
     private String lastName;
     
     @Column(name="email", nullable=false, length=200)
@@ -58,7 +58,7 @@ public class TechDetailsEntity {
 
     @Override
     public String toString() {
-        return "EmployeeEntity [id=" + id + ", firstName=" + firstName + 
+        return "TechDetailsEntity [id=" + id + ", firstName=" + firstName +
                 ", lastName=" + lastName + ", email=" + email   + "]";
     }
 }

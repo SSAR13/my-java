@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.spring.h2.demo.exception.RecordNotFoundException;
-import com.spring.h2.demo.model.EmployeeEntity;
+import com.spring.h2.demo.model.TechDetailsEntity;
 import com.spring.h2.demo.service.TechService;
  
 @RestController
@@ -25,25 +25,25 @@ public class TechController
     TechService service;
  
     @GetMapping
-    public ResponseEntity<List<EmployeeEntity>> getAllEmployees() {
-        List<EmployeeEntity> list = service.getAllEmployees();
+    public ResponseEntity<List<TechDetailsEntity>> getAllEmployees() {
+        List<TechDetailsEntity> list = service.getAllEmployees();
  
-        return new ResponseEntity<List<EmployeeEntity>>(list, new HttpHeaders(), HttpStatus.OK);
+        return new ResponseEntity<List<TechDetailsEntity>>(list, new HttpHeaders(), HttpStatus.OK);
     }
  
     @GetMapping("/{id}")
-    public ResponseEntity<EmployeeEntity> getEmployeeById(@PathVariable("id") Long id)
+    public ResponseEntity<TechDetailsEntity> getEmployeeById(@PathVariable("id") Long id)
                                                     throws RecordNotFoundException {
-        EmployeeEntity entity = service.getEmployeeById(id);
+        TechDetailsEntity entity = service.getEmployeeById(id);
  
-        return new ResponseEntity<EmployeeEntity>(entity, new HttpHeaders(), HttpStatus.OK);
+        return new ResponseEntity<TechDetailsEntity>(entity, new HttpHeaders(), HttpStatus.OK);
     }
  
     @PostMapping
-    public ResponseEntity<EmployeeEntity> createOrUpdateEmployee(EmployeeEntity employee)
+    public ResponseEntity<TechDetailsEntity> createOrUpdateEmployee(TechDetailsEntity employee)
                                                     throws RecordNotFoundException {
-        EmployeeEntity updated = service.createOrUpdateEmployee(employee);
-        return new ResponseEntity<EmployeeEntity>(updated, new HttpHeaders(), HttpStatus.OK);
+        TechDetailsEntity updated = service.createOrUpdateEmployee(employee);
+        return new ResponseEntity<TechDetailsEntity>(updated, new HttpHeaders(), HttpStatus.OK);
     }
  
     @DeleteMapping("/{id}")

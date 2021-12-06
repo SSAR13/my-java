@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import com.spring.h2.demo.model.EmployeeEntity;
+import com.spring.h2.demo.model.TechDetailsEntity;
 import com.spring.h2.demo.repository.TechRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,20 +17,20 @@ public class TechService {
     @Autowired
     TechRepository repository;
      
-    public List<EmployeeEntity> getAllEmployees()
+    public List<TechDetailsEntity> getAllEmployees()
     {
-        List<EmployeeEntity> employeeList = repository.findAll();
+        List<TechDetailsEntity> employeeList = repository.findAll();
          
         if(employeeList.size() > 0) {
             return employeeList;
         } else {
-            return new ArrayList<EmployeeEntity>();
+            return new ArrayList<TechDetailsEntity>();
         }
     }
      
-    public EmployeeEntity getEmployeeById(Long id) throws RecordNotFoundException
+    public TechDetailsEntity getEmployeeById(Long id) throws RecordNotFoundException
     {
-        Optional<EmployeeEntity> employee = repository.findById(id);
+        Optional<TechDetailsEntity> employee = repository.findById(id);
          
         if(employee.isPresent()) {
             return employee.get();
@@ -39,13 +39,13 @@ public class TechService {
         }
     }
      
-    public EmployeeEntity createOrUpdateEmployee(EmployeeEntity entity) throws RecordNotFoundException
+    public TechDetailsEntity createOrUpdateEmployee(TechDetailsEntity entity) throws RecordNotFoundException
     {
-        Optional<EmployeeEntity> employee = repository.findById(entity.getId());
+        Optional<TechDetailsEntity> employee = repository.findById(entity.getId());
          
         if(employee.isPresent())
         {
-            EmployeeEntity newEntity = employee.get();
+            TechDetailsEntity newEntity = employee.get();
             newEntity.setEmail(entity.getEmail());
             newEntity.setFirstName(entity.getFirstName());
             newEntity.setLastName(entity.getLastName());
@@ -62,7 +62,7 @@ public class TechService {
      
     public void deleteEmployeeById(Long id) throws RecordNotFoundException
     {
-        Optional<EmployeeEntity> employee = repository.findById(id);
+        Optional<TechDetailsEntity> employee = repository.findById(id);
          
         if(employee.isPresent())
         {
